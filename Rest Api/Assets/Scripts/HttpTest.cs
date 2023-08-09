@@ -16,7 +16,8 @@ public class HttpTest : MonoBehaviour
     UserList_Model users;
     [SerializeField] List<RawImage> images = new List<RawImage>();
     [SerializeField] int currentUser;
-
+    [SerializeField]
+    TMP_Text[] charNames;
     //
     [SerializeField] TMP_Text Name;
     [SerializeField] TMP_Text ID;
@@ -117,6 +118,7 @@ public class HttpTest : MonoBehaviour
         else
         {
             Character_model character = JsonUtility.FromJson<Character_model>(request.downloadHandler.text);
+            charNames[index].text = character.name;
             StartCoroutine(DownloadImage(character.image, index));
         }
     }
